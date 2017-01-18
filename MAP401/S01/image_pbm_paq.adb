@@ -61,7 +61,6 @@ package body image_pbm_paq is
 		f : file_type;
 		c : character;
 		H,L : positive;
-		x,y : positive;
 		s : string(1..1000);
 		ls : natural;
 		M : image;
@@ -96,13 +95,13 @@ package body image_pbm_paq is
 		end if;		
 		skip_line(f);
 
-		for j in 1..H loop
-			for i in 1..L loop
+		for y in 1..H loop
+			for x in 1..L loop
 				get(f, c);
 				while(c /= '0' and c /='1') loop
 					get(f,c);
 				end loop;
-				if c = '1' then set_pixel(m,i,j,1); 
+				if c = '1' then set_pixel(m,x,y,1); 
 				end if;
 			end loop;
 		end loop;

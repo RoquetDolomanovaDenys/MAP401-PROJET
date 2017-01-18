@@ -78,12 +78,21 @@ package body geometrie2d_paq is
 
 	procedure put(u : vecteur) is
 	begin
-		put("("&long_float'Image(u.x)&","&long_float'Image(u.y)&")");
+		put("("&Reel'Image(u.x)&","&Reel'Image(u.y)&")");
 	end put;
+
+	procedure put_precise(u : vecteur; after, expo : natural) is
+	begin
+		put("(");
+		put(u.x, aft => after, exp => expo);
+		put(",");
+		put(u.y, aft => after, exp => expo);
+		put(")");
+	end put_precise;
 
 	procedure put_line(u:vecteur) is
 	begin
-		  put("("&long_float'Image(u.x)&","&long_float'Image(u.y)&")");
+		  put("("&Reel'Image(u.x)&","&Reel'Image(u.y)&")");
 	          new_line;
 	end put_line; 
 end geometrie2d_paq ; 

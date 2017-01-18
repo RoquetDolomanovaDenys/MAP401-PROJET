@@ -22,6 +22,7 @@ package geometrie2d_paq is
 	function norme(u : vecteur) return Reel;
 	function distance(a,b : point) return Reel;
 	procedure put(u : vecteur);
+	procedure put_precise(u : vecteur; after, expo : natural);
 	procedure put_line(u:vecteur);
 
 	

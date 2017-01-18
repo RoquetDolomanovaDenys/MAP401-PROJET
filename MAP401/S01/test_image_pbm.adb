@@ -10,7 +10,17 @@ procedure test_image_pbm is
 	I : image;
 begin
 
-	I := lire_image("caractere2.pbm");
+	I := lire_image("caractere2-ligne.pbm");
+	put(I);
+	set_pixel(I, 1,7, 1);
+	set_pixel(I, 2,7, 1);
+	set_pixel(I, 34,7, 0);
+	set_pixel(I, 3,7, 0);
+	set_pixel(I, 4,7, 1);
+	set_pixel(I, 5,7, 1);
+	set_pixel(I, 6,7, 1);
+	set_pixel(I, 7,7, 1);
+	put_line("Image modifie:");
 	put(I);
 	supprimer_image(I);
 

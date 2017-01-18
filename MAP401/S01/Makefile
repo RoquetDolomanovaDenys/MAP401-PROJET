@@ -32,7 +32,7 @@ INCLUDEOPTS = -I$(INCDIR)
 COMPILOPTS = -g $(INCLUDEOPTS)
 
 # liste des executables
-EXECUTABLES = test_image_pbm_paq 
+EXECUTABLES = test_image_pbm test_geometrie2d
 
 
 #############################################################################
@@ -58,16 +58,31 @@ all : $(CIBLE)
 ########################################################
 # regles explicites de compilation separee de modules
 # n'ayant pas de fichier .ads ET/OU dependant d'autres paquetages
-test_image_pbm_paq.ali : test_image_pbm_paq.adb image_pbm_paq.ali 
+test_image_pbm.ali : test_image_pbm.adb image_pbm_paq.ali 
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation de la procedure test_image_pbm_paq"
 	@echo "---------------------------------------------"
 	gnat compile $(COMPILOPTS) $<
 
+test_geometrie2d.ali : test_geometrie2d.adb geometrie2d_paq.ali 
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation de la procedure test_geometrie2d"
+	@echo "---------------------------------------------"
+	gnat compile $(COMPILOPTS) $<
+
 ########################################################
 # regles explicites de creation des executables
-test_image_pbm_paq : test_image_pbm_paq.ali 
+test_image_pbm : test_image_pbm.ali 
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	gnat bind -x $(COMPILOPTS) $<
+	gnat link $< $(GNATLDOPTS) -o $@
+
+test_geometrie2d : test_geometrie2d.ali 
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@
